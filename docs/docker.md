@@ -11,7 +11,7 @@ Here's how you can adjust your Docker build command to set the build context to 
 
 ```Shell
 # Run this from the root of your monorepo
-docker build -f cmd/authentication/Dockerfile .
+docker build -f services/authentication/Dockerfile .
 ```
 
 ```dockerfile

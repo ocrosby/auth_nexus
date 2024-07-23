@@ -1,4 +1,4 @@
-module github.com/ocrosby/auth_nexus/token
+module github.com/ocrosby/auth_nexus/services/authorization
 
 go 1.22.5
 

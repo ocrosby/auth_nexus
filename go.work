@@ -1,13 +1,13 @@
 go 1.22.5
 
 use (
-	./cmd/authentication
-	./cmd/authorization
-	./cmd/gateway
-	./cmd/management
-	./cmd/resource
-	./cmd/token
-	./cmd/user
+	./services/authentication
+	./services/authorization
+	./services/gateway
+	./services/management
+	./services/resource
+	./services/token
+	./services/user
 	./pkg
 	./internal
 )

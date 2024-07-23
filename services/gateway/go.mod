@@ -1,4 +1,4 @@
-module github.com/ocrosby/auth_nexus/cmd/authentication
+module github.com/ocrosby/auth_nexus/services/gateway
 
 go 1.22.5
 
