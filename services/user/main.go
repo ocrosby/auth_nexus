@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/ocrosby/auth_nexus/internal/user"
-	"github.com/ocrosby/auth_nexus/pkg/logger"
+	"github.com/ocrosby/auth-nexus/internal/user"
+	"github.com/ocrosby/auth-nexus/pkg/logger"
 )
 
 func main() {

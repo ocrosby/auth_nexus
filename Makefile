@@ -2,13 +2,15 @@
 
 # Default target
 all: build_all
+	docker image prune -f
+	docker image ls
 
 # Define service names
 SERVICES = authentication authorization gateway management resource token user
 
 # Docker build command template
 build-%:
-	docker build -f services/$*/Dockerfile . -t $*:latest
+	SERVICE_NAME=$* docker build -f build/Dockerfile . -t $*:latest
 
 # Rule to build all services
 build_all: $(addprefix build-, $(SERVICES))

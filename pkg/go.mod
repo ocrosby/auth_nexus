@@ -1,4 +1,4 @@
-module github.com/ocrosby/auth_nexus/pkg
+module github.com/ocrosby/auth-nexus/pkg
 
 go 1.22.5
 

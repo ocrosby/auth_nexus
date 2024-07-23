@@ -1,14 +1,14 @@
-module github.com/ocrosby/auth_nexus/services/resource
+module github.com/ocrosby/auth-nexus/services/resource
 
 go 1.22.5
 
 require (
-	github.com/ocrosby/auth_nexus/internal v0.0.0
-	github.com/ocrosby/auth_nexus/pkg v0.0.0
+	github.com/ocrosby/auth-nexus/internal v0.0.0
+	github.com/ocrosby/auth-nexus/pkg v0.0.0
 )
 
 require golang.org/x/exp v0.0.0-20240719175910-8a7402abbf56 // indirect
 
-replace github.com/ocrosby/auth_nexus/pkg => ../../pkg
+replace github.com/ocrosby/auth-nexus/pkg => ../../pkg
 
-replace github.com/ocrosby/auth_nexus/internal => ../../internal
+replace github.com/ocrosby/auth-nexus/internal => ../../internal

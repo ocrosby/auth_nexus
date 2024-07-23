@@ -21,11 +21,11 @@ FROM golang:1.22.5
 WORKDIR /app
 
 COPY go.work .
-COPY cmd/authentication/go.mod .
-COPY cmd/authentication/go.sum .
+COPY services/authentication/go.mod .
+COPY services/authentication/go.sum .
 COPY pkg/ pkg/
 COPY internal/ internal/
-COPY cmd/authentication/ .
+COPY services/authentication/ .
 
 RUN go mod download
 RUN go build -o authentication-service .
@@ -46,11 +46,11 @@ WORKDIR /app
 RUN apk add --no-cache git
 
 COPY go.work .
-COPY cmd/authentication/go.mod .
-COPY cmd/authentication/go.sum .
+COPY services/authentication/go.mod .
+COPY services/authentication/go.sum .
 COPY pkg/ pkg/
 COPY internal/ internal/
-COPY cmd/authentication/ .
+COPY services/authentication/ .
 
 RUN go mod download
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o service .
