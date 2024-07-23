@@ -1,0 +1,13 @@
+go 1.22.5
+
+use (
+	./cmd/authentication
+	./cmd/authorization
+	./cmd/gateway
+	./cmd/management
+	./cmd/resource
+	./cmd/token
+	./cmd/user
+	./pkg
+	./internal
+)
