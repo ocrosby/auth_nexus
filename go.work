@@ -9,5 +9,6 @@ use (
 	./services/token
 	./services/user
 	./pkg
+	./cmd
 	./internal
 )
