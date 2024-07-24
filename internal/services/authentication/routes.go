@@ -1,24 +1,21 @@
-package router
+package authentication
 
-import "net/http"
+import (
+	"github.com/ocrosby/auth-nexus/internal/services/authentication/handlers"
+	"net/http"
+)
 
 func SetupRoutes() *http.ServeMux {
 	router := http.NewServeMux()
 
 	// Authenticate a user and issue tokens
-	router.HandleFunc("POST /login", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Login service"))
-	})
+	router.HandleFunc("POST /login", handlers.LoginHandler)
 
 	// Invalidate tokens.
-	router.HandleFunc("POST /logout", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Logout service"))
-	})
+	router.HandleFunc("POST /logout", handlers.LogoutHandler)
 
 	// Refresh access tokens using refresh tokens
-	router.HandleFunc("POST /token/refresh", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Token refresh service"))
-	})
+	router.HandleFunc("POST /token/refresh", handlers.TokenRefreshHandler)
 
 	return router
 }

@@ -1,4 +1,4 @@
-package router
+package gateway
 
 import "net/http"
 

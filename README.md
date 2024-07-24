@@ -89,3 +89,14 @@ participant R as Resource Server
 When updating a shared dependency, you can do so in it's own project directory and then run `go mod tidy` in each 
 dependent project to ensure they are using the updated version.
 
+
+
+## References
+
+- [OAuth 2.0](https://oauth.net/2/)
+- [JWT](https://jwt.io/)
+- [OpenID Connect](https://openid.net/connect/)
+- [The Twelve-Factor App](https://12factor.net/)
+- [Configuration with Viper in Go](https://medium.com/@amitshekhar/configuration-with-viper-in-go-e49db1b4ff37)
+- [Viper Configuration Package on GitHub](https://github.com/spf13/viper)
+- [Go Backend Clean Architecture](https://github.com/amitshekhariitbhu/go-backend-clean-architecture)

@@ -1,4 +1,4 @@
-package router
+package authorization
 
 import "net/http"
 

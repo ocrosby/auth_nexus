@@ -5,22 +5,31 @@ import (
 	"os"
 )
 
-// Logger is the global logger instance
-var Logger *slog.Logger
+type LoggerInterface interface {
+	Info(message string, fields map[string]interface{})
+	Error(message string, fields map[string]interface{})
+	Debug(message string, fields map[string]interface{})
+}
 
-// Init initializes the global logger with a JSON handler
-func Init() {
+type CustomLogger struct {
+	innerLogger *slog.Logger
+}
+
+func NewLogger() *CustomLogger {
 	// Create a JSON handler that writes to stdout
 	jsonHandler := slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{
 		Level: slog.LevelInfo,
 	})
 
 	// Create a new logger instance with the JSON handler
-	Logger = slog.New(jsonHandler)
+	logger := &CustomLogger{
+		innerLogger: slog.New(jsonHandler),
+	}
+
+	return logger
 }
 
-// Info logs an info message with structured data
-func Info(message string, fields map[string]interface{}) {
+func (l *CustomLogger) Info(message string, fields map[string]interface{}) {
 	attrs := toSlogAttrs(fields)
 	var attrsAny []any
 
@@ -29,11 +38,10 @@ func Info(message string, fields map[string]interface{}) {
 		attrsAny[i] = attr
 	}
 
-	Logger.Info(message, attrsAny...)
+	l.innerLogger.Info(message, attrsAny...)
 }
 
-// Error logs an error message with structured data
-func Error(message string, fields map[string]interface{}) {
+func (l *CustomLogger) Error(message string, fields map[string]interface{}) {
 	attrs := toSlogAttrs(fields)
 	var attrsAny []any
 
@@ -42,11 +50,10 @@ func Error(message string, fields map[string]interface{}) {
 		attrsAny[i] = attr
 	}
 
-	Logger.Error(message, attrsAny...)
+	l.innerLogger.Error(message, attrsAny...)
 }
 
-// Debug logs a debug message with structured data
-func Debug(message string, fields map[string]interface{}) {
+func (l *CustomLogger) Debug(message string, fields map[string]interface{}) {
 	attrs := toSlogAttrs(fields)
 	var attrsAny []any
 
@@ -55,7 +62,7 @@ func Debug(message string, fields map[string]interface{}) {
 		attrsAny[i] = attr
 	}
 
-	Logger.Debug(message, attrsAny...)
+	l.innerLogger.Debug(message, attrsAny...)
 }
 
 // toSlogAttrs converts a map to slog's Attr type
