@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/ocrosby/auth-nexus/internal/authentication"
+	"github.com/ocrosby/auth-nexus/internal/authentication/router"
 	"github.com/ocrosby/auth-nexus/pkg/logger"
 )
 
@@ -10,10 +11,9 @@ func main() {
 		err error
 	)
 
-	service := authentication.NewService()
-
-	// Initialize the logger
-	logger.Init()
+	mux := router.SetupRoutes()
+	logger := logger.NewLogger()
+	service := authentication.NewServer(logger, mux)
 
 	// Log an info message
 	logger.Info("Application started", map[string]interface{}{
